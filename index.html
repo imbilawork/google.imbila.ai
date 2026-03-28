@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Google AI Academy — Guided by Imbila.AI</title>
+<meta name="description" content="Imbila guides you from Google AI Studio to production — a 4-week bootcamp to build, deploy, and scale with Gemini and Google Cloud AI.">
+<link rel="icon" type="image/png" href="https://www.imbila.ai/content/images/2025/11/New_Honey_200.png">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+:root{--font:'DM Sans',system-ui,-apple-system,sans-serif;--honey:#EDAF42;--hl:#F5C96E;--hd:#C8922F;--hdp:#A67720;--hw:#FAE0A5;--h10:rgba(237,175,66,.10);--h15:rgba(237,175,66,.15);--bk:#0A0A0A;--g9:#1F1E1E;--g8:#2A2A2A;--g7:#3D3D3D;--g6:#555;--g5:#777;--g4:#999;--g3:#BBB;--g2:#DDD;--g1:#EEE;--g05:#F5F5F5;--wh:#FAFAFA;--ok:#3A9E6B;--info:#4A90B8;--gb:#4285F4;--gg:#34A853;--gy:#FBBC04;--gr:#EA4335}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:var(--font);color:var(--g8);background:var(--wh);line-height:1.6}
+a{color:inherit;text-decoration:none}
+.pg{max-width:1080px;margin:0 auto;padding:0 28px}
+/* NAV */
+.nav{position:sticky;top:0;z-index:100;background:rgba(10,10,10,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--g8);padding:0 28px;height:56px;display:flex;align-items:center;justify-content:space-between}
+.nav-left{display:flex;align-items:center;gap:12px}.nav-mark{width:28px;height:28px}
+.nav-name{font-size:15px;font-weight:600;color:var(--wh)}.nav-name em{font-style:normal;color:var(--honey)}
+.nav-links{display:flex;align-items:center;gap:24px}
+.nav-links a{font-size:13px;font-weight:500;color:var(--g4);transition:color .2s}.nav-links a:hover{color:var(--wh)}.nav-links a.active{color:var(--honey)}
+.nav-cta{padding:7px 16px!important;background:var(--honey)!important;color:var(--bk)!important;font-weight:600!important;border-radius:100px;transition:background .2s!important}.nav-cta:hover{background:var(--hl)!important}
+.mob{display:none;background:none;border:none;color:var(--wh);font-size:22px;cursor:pointer}
+@media(max-width:768px){.mob{display:block}.nav-links{display:none;position:absolute;top:56px;left:0;right:0;background:var(--bk);flex-direction:column;padding:20px 28px;gap:14px;border-bottom:1px solid var(--g8)}.nav-links.open{display:flex}}
+/* BTN */
+.btn{display:inline-flex;align-items:center;gap:6px;padding:11px 22px;font-size:14px;font-weight:600;font-family:var(--font);cursor:pointer;border:none;border-radius:100px;transition:all .2s}
+.btn-p{background:var(--honey);color:var(--bk)}.btn-p:hover{background:var(--hl)}
+.btn-g{background:transparent;color:var(--wh);border:1px solid var(--g7)}.btn-g:hover{border-color:var(--g5)}
+.btn-o{background:transparent;color:var(--g7);border:1px solid var(--g2)}.btn-o:hover{border-color:var(--honey);color:var(--hd)}
+.btn-dark{background:var(--bk);color:var(--wh)}.btn-dark:hover{background:var(--g8)}
+/* HERO */
+.hero{background:var(--wh);color:var(--bk);padding:56px 28px 64px;position:relative;overflow:hidden;border-bottom:1px solid var(--g1)}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 40% 50% at 20% 40%,rgba(66,133,244,.06) 0%,transparent 50%),radial-gradient(ellipse 40% 50% at 80% 60%,rgba(52,168,83,.05) 0%,transparent 50%),radial-gradient(ellipse 30% 40% at 50% 20%,rgba(251,188,4,.05) 0%,transparent 50%);pointer-events:none}
+.hero-inner{max-width:1080px;margin:0 auto;position:relative;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gb);margin-bottom:24px}
+.hero-badge::before{content:'';width:28px;height:3px;background:linear-gradient(90deg,var(--gb),var(--gr),var(--gy),var(--gg))}
+.hero h1{font-size:clamp(32px,5vw,48px);font-weight:800;line-height:1.08;letter-spacing:-.03em;margin-bottom:14px;max-width:680px;color:var(--bk)}
+.hero h1 em{font-style:normal;background:linear-gradient(135deg,var(--gb),var(--gg));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero>div>p{font-size:17px;color:var(--g6);max-width:520px;margin-bottom:28px;line-height:1.65}
+.hero-act{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:40px}
+.hero-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+@media(max-width:768px){.hero-cards{grid-template-columns:1fr}}
+.hc{background:var(--wh);border:1px solid var(--g1);border-radius:12px;padding:20px 22px;transition:border-color .2s}
+.hc:hover{border-color:var(--honey)}
+.hc-num{font-size:11px;font-weight:700;color:var(--honey);letter-spacing:.1em;margin-bottom:6px}
+.hc h3{font-size:15px;font-weight:700;color:var(--bk);margin-bottom:4px}
+.hc p{font-size:13px;color:var(--g5);line-height:1.55;max-width:none}
+/* SECTIONS */
+.sect{padding:56px 0}.sect-b{border-bottom:1px solid var(--g1)}.sect-grey{background:var(--g05)}.sect-dark{background:var(--bk);color:var(--wh)}
+.label{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--hd);margin-bottom:8px}
+h2{font-size:28px;font-weight:700;line-height:1.2;letter-spacing:-.02em;margin-bottom:6px;color:var(--bk)}
+.sect-dark h2,.sect-dark .label{color:var(--wh)}.sect-dark .label{color:var(--honey)}
+.sdesc{font-size:16px;color:var(--g6);max-width:56ch;margin-bottom:32px;line-height:1.65}
+/* 4-WEEK FRAMEWORK */
+.fd-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+@media(max-width:768px){.fd-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.fd-grid{grid-template-columns:1fr}}
+.fd{border:1px solid var(--g1);border-radius:12px;padding:24px;text-align:center;transition:all .2s;background:var(--wh)}
+.fd:hover{border-color:var(--honey);box-shadow:0 4px 20px rgba(237,175,66,.08)}
+.fd-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:20px;font-weight:800}
+.fd-icon-1{background:rgba(66,133,244,.1);color:var(--gb)}
+.fd-icon-2{background:rgba(234,67,53,.1);color:var(--gr)}
+.fd-icon-3{background:rgba(251,188,4,.1);color:var(--gy)}
+.fd-icon-4{background:rgba(52,168,83,.1);color:var(--gg)}
+.fd h3{font-size:16px;font-weight:700;color:var(--bk);margin-bottom:4px;letter-spacing:0;text-transform:none}
+.fd p{font-size:13px;color:var(--g5);line-height:1.55;max-width:none}
+/* COURSE CARDS */
+.cc{background:var(--wh);border:1px solid var(--g1);border-radius:12px;overflow:hidden;transition:all .2s}
+.cc:hover{border-color:var(--honey);box-shadow:0 4px 24px rgba(237,175,66,.08);transform:translateY(-2px)}
+.cc-accent{height:3px;background:linear-gradient(90deg,var(--gb),var(--gr),var(--gy),var(--gg));opacity:.25;transition:opacity .2s}.cc:hover .cc-accent{opacity:1}
+.cc-body{padding:24px}
+.cc-tier{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--g4);margin-bottom:10px}
+.cc h4{font-size:18px;font-weight:700;color:var(--bk);margin-bottom:4px}
+.cc .sub{font-size:14px;color:var(--g5);margin-bottom:14px;line-height:1.6}
+.cc-curric{font-size:13px;color:var(--g5);line-height:1.65;margin-bottom:16px}.cc-curric strong{color:var(--g7);font-weight:600}
+.cc-foot{display:flex;justify-content:space-between;align-items:center;gap:8px;padding-top:14px;border-top:1px solid var(--g1);flex-wrap:wrap}
+.cc-free{font-size:12px;font-weight:600;color:var(--ok);background:rgba(58,158,107,.08);padding:3px 10px;border-radius:100px}
+.cc-link{font-size:12px;font-weight:600;color:var(--hd);padding:5px 12px;border:1px solid var(--h15);border-radius:100px;transition:all .2s}.cc-link:hover{background:var(--h10);border-color:var(--honey)}
+/* PRICING */
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}
+@media(max-width:768px){.price-grid{grid-template-columns:1fr}}
+.price-card{border:1px solid var(--g1);border-radius:12px;padding:24px;background:var(--wh);text-align:center;transition:border-color .2s}
+.price-card:hover{border-color:var(--honey)}
+.price-card.featured{border-color:var(--honey);box-shadow:0 4px 20px rgba(237,175,66,.1)}
+.price-tag{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--g4);margin-bottom:8px}
+.price-val{font-size:28px;font-weight:800;color:var(--bk);margin-bottom:4px}
+.price-note{font-size:13px;color:var(--g5);line-height:1.55}
+/* VIDEO */
+.vid-embed{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;border:1px solid var(--g1);margin-bottom:12px}
+.vid-embed iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
+/* SUPPORT */
+.sup-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:768px){.sup-grid{grid-template-columns:1fr}}
+.sup{border:1px solid var(--g1);border-radius:12px;padding:24px;text-align:center;transition:border-color .2s;background:var(--wh)}
+.sup:hover{border-color:var(--honey)}
+.sup-icon{width:44px;height:44px;border-radius:12px;background:var(--h10);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:18px}
+.sup h4{font-size:15px;font-weight:700;color:var(--bk);margin-bottom:4px}
+.sup p{font-size:13px;color:var(--g5);line-height:1.55;max-width:none}
+/* MORE COURSES */
+.mc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+.mc{border:1px solid var(--g1);border-radius:12px;padding:20px;transition:border-color .2s;background:var(--wh)}
+.mc:hover{border-color:var(--g2)}
+.mc h4{font-size:15px;font-weight:700;color:var(--bk);margin-bottom:2px}
+.mc .sub{font-size:13px;color:var(--g5);margin-bottom:10px}
+.mc-foot{display:flex;justify-content:space-between;align-items:center;font-size:12px}
+/* FAQ */
+.faq-item{border-bottom:1px solid var(--g1)}
+.faq-q{width:100%;text-align:left;background:none;border:none;padding:18px 0;display:flex;justify-content:space-between;align-items:center;gap:20px;cursor:pointer;font-family:var(--font);font-size:15px;font-weight:600;color:var(--g8)}
+.faq-q:hover{color:var(--hd)}
+.faq-icon{font-size:18px;color:var(--g4);flex-shrink:0;transition:transform .2s;font-weight:300}
+.faq-item.open .faq-icon{transform:rotate(45deg);color:var(--honey)}
+.faq-a{display:none;padding:0 0 18px;font-size:14px;line-height:1.7;color:var(--g6);max-width:62ch}.faq-item.open .faq-a{display:block}
+/* CTA */
+.cta-s{background:var(--bk);color:var(--wh);padding:56px 0;text-align:center}
+.cta-s h2{color:var(--wh)}.cta-s p{font-size:16px;color:var(--g4);max-width:480px;margin:0 auto 24px}
+.cta-act{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+/* FOOTER */
+.ft{background:var(--bk);color:var(--g5);padding:36px 28px;font-size:13px}
+.ft-inner{max-width:1080px;margin:0 auto}
+.ft-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px;margin-bottom:20px}
+.ft-brand{display:flex;align-items:center;gap:10px;color:var(--wh);font-weight:600;font-size:15px}.ft-brand em{font-style:normal;color:var(--honey)}
+.ft-links{display:flex;gap:18px;flex-wrap:wrap}.ft-links a{color:var(--g5);transition:color .2s;font-size:13px}.ft-links a:hover{color:var(--wh)}
+.ft-legal{font-size:11px;color:var(--g7);border-top:1px solid var(--g8);padding-top:16px;line-height:1.6}
+/* GOOGLE DOTS */
+.g-dots{display:inline-flex;gap:4px;margin-right:6px}.g-dot{width:6px;height:6px;border-radius:50%}
+/* WORKSHOP GRID */
+.ws-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px}
+@media(max-width:768px){.ws-grid{grid-template-columns:1fr}}
+.ws{border:1px solid var(--g1);border-radius:12px;padding:20px 22px;background:var(--wh);transition:border-color .2s}
+.ws:hover{border-color:var(--honey)}
+.ws-num{font-size:11px;font-weight:700;letter-spacing:.1em;margin-bottom:6px}
+.ws h4{font-size:15px;font-weight:700;color:var(--bk);margin-bottom:4px}
+.ws p{font-size:13px;color:var(--g5);line-height:1.55;max-width:none}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="https://platform.imbila.ai" class="nav-left"><img class="nav-mark" src="https://www.imbila.ai/content/images/2026/03/imbila-mark-traced.svg" alt="Imbila.AI"><span class="nav-name">Imbila<em>.AI</em></span></a>
+  <button class="mob" onclick="document.querySelector('.nav-links').classList.toggle('open')">&#9776;</button>
+  <div class="nav-links"><a href="https://platform.imbila.ai">Home</a><a href="https://claude.imbila.ai">Claude Academy</a><a href="https://openai.imbila.ai">OpenAI Academy</a><a href="#" class="active">Google AI</a><a href="https://demo.imbila.ai">Demos</a><a href="https://imbila.ai">Blog</a><a href="mailto:hello@imbila.ai" class="nav-cta">Contact</a></div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge"><span class="g-dots"><span class="g-dot" style="background:var(--gb)"></span><span class="g-dot" style="background:var(--gr)"></span><span class="g-dot" style="background:var(--gy)"></span><span class="g-dot" style="background:var(--gg)"></span></span> Imbila.AI &#215; Google AI</div>
+    <h1>Build with <em>Google AI</em> &#8212; from prompts to production</h1>
+    <p>Learn to build with Gemini, Google AI Studio, and Google Cloud AI. From your first prompt to production deployment &#8212; guided by Imbila every step of the way.</p>
+    <div class="hero-act">
+      <a href="https://aistudio.google.com/" target="_blank" class="btn btn-p">Start with AI Studio &#8599;</a>
+      <a href="mailto:hello@imbila.ai?subject=Google%20AI%20Bootcamp%20Booking" class="btn btn-dark">Book the Bootcamp</a>
+      <a href="https://www.imbila.ai/ai-workshop-mastery-assessment/" class="btn btn-o">Take the AI Diagnostic</a>
+    </div>
+    <div class="hero-cards">
+      <div class="hc"><div class="hc-num">STEP 1</div><h3>Explore AI Studio free</h3><p>Open Google AI Studio in your browser &#8212; no setup, no credit card. Start prompting Gemini in seconds.</p></div>
+      <div class="hc"><div class="hc-num">STEP 2</div><h3>Join the 4-week Bootcamp</h3><p>Weekly 3.5-hour workshops with a maximum of 6 participants. Go from starter apps to production-ready builds.</p></div>
+      <div class="hc"><div class="hc-num">STEP 3</div><h3>Deploy to Google Cloud</h3><p>Ship to Cloud Run, Vertex AI, or Firebase. Eligible for up to $350K in Google Cloud startup credits.</p></div>
+    </div>
+  </div>
+</header>
+
+<!-- 4-WEEK BOOTCAMP FRAMEWORK -->
+<section class="sect sect-b">
+<div class="pg">
+  <div class="label">The Bootcamp Framework</div>
+  <h2>4 Weeks from Idea to Production</h2>
+  <p class="sdesc">A progressive, hands-on curriculum. Each week builds on the last &#8212; so by week 4 you have a real, deployed product running on Google Cloud.</p>
+  <div class="fd-grid">
+    <div class="fd"><div class="fd-icon fd-icon-1">1</div><h3>Discover</h3><p>Foundation week. Explore AI Studio, test starter apps, understand Gemini&#8217;s capabilities &#8212; text, vision, code, and multimodal.</p></div>
+    <div class="fd"><div class="fd-icon fd-icon-2">2</div><h3>Build</h3><p>Hands-on customisation. Modify real applications, integrate the Gemini API, build your first working prototype.</p></div>
+    <div class="fd"><div class="fd-icon fd-icon-3">3</div><h3>Connect</h3><p>Infrastructure week. Google Cloud integration, authentication, databases, scaling &#8212; the production backbone.</p></div>
+    <div class="fd"><div class="fd-icon fd-icon-4">4</div><h3>Deploy</h3><p>Launch week. Production readiness, monitoring, monetisation strategy, and your go-live deployment.</p></div>
+  </div>
+  <div style="margin-top:24px;padding:20px 24px;background:var(--g05);border-radius:12px;border:1px solid var(--g1)">
+    <p style="font-size:14px;color:var(--g6);line-height:1.7;max-width:none"><strong style="color:var(--bk)">Why this structure works:</strong> Each week has a clear deliverable. You don&#8217;t just learn theory &#8212; you ship. By the end of 4 weeks you have a production-ready application, the skills to maintain and extend it, and a path to Google Cloud credits worth up to $350,000.</p>
+  </div>
+</div>
+</section>
+
+<!-- PRIMARY COURSE: BOOTCAMP -->
+<section class="sect sect-b">
+<div class="pg">
+  <div class="label">The Core Programme</div>
+  <h2>Google AI Studio Bootcamp</h2>
+  <p class="sdesc">4 progressive workshops. 3.5 hours each. Weekly. Maximum 6 participants per cohort &#8212; so you get real attention, not a lecture hall.</p>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:28px">
+    <div class="cc" style="margin:0"><div class="cc-accent"></div><div class="cc-body">
+      <div class="cc-tier">4-Week Bootcamp &middot; Cohort-Based &middot; Certificate</div>
+      <h4>Google AI Studio Bootcamp</h4>
+      <div class="sub">Go from zero to a deployed Google AI application in 4 weeks. Hands-on, small-group, production-focused.</div>
+      <div class="cc-curric"><strong>Curriculum:</strong> Week 1: Discover &amp; Explore &#8594; Week 2: Build &amp; Modify &#8594; Week 3: Connect &amp; Scale &#8594; Week 4: Deploy &amp; Grow</div>
+      <div class="cc-foot"><span style="font-size:12px;font-weight:600;color:var(--gb)">Max 6 participants</span><a href="mailto:hello@imbila.ai?subject=Google%20AI%20Bootcamp%20Booking" class="cc-link">Book your spot &#8594;</a></div>
+    </div></div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div style="padding:20px;border:1px solid var(--g1);border-radius:12px;flex:1">
+        <div style="font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--g4);margin-bottom:8px">What&#8217;s included</div>
+        <p style="font-size:14px;color:var(--g6);line-height:1.6;max-width:none">Starter code for every workshop &#183; Session recordings &#183; Completion certificate &#183; Google Cloud credits eligibility (up to $350K for qualifying startups) &#183; Post-bootcamp community access</p>
+      </div>
+      <div style="padding:20px;border:1px solid var(--g1);border-radius:12px;flex:1">
+        <div style="font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--g4);margin-bottom:8px">Who it&#8217;s for</div>
+        <p style="font-size:14px;color:var(--g6);line-height:1.6;max-width:none">Developers, founders, product teams, and technical leaders who want to build real products with Google AI. Basic coding familiarity helpful but not required.</p>
+      </div>
+      <div style="padding:20px;border:1px solid var(--g1);border-radius:12px;flex:1">
+        <div style="font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--g4);margin-bottom:8px">Format</div>
+        <p style="font-size:14px;color:var(--g6);line-height:1.6;max-width:none"><strong style="color:var(--bk)">Weekly</strong> 3.5-hour sessions &#183; <strong style="color:var(--bk)">Live</strong> on Zoom or in-person at Workshop17 JHB &#183; <strong style="color:var(--bk)">Small group</strong> &#8212; maximum 6 per cohort</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Workshop breakdown -->
+  <div class="ws-grid">
+    <div class="ws"><div class="ws-num" style="color:var(--gb)">WORKSHOP 1 &#183; WEEK 1</div><h4>Discover &amp; Explore</h4><p>Google AI Studio orientation. Prompt design fundamentals. Understanding Gemini models &#8212; text, vision, code, multimodal. Building your first structured prompt. Testing starter applications.</p></div>
+    <div class="ws"><div class="ws-num" style="color:var(--gr)">WORKSHOP 2 &#183; WEEK 2</div><h4>Build &amp; Modify</h4><p>Gemini API integration. Modifying real applications. Function calling. System instructions. Grounding with search. Building your custom prototype.</p></div>
+    <div class="ws"><div class="ws-num" style="color:var(--gy)">WORKSHOP 3 &#183; WEEK 3</div><h4>Connect &amp; Scale</h4><p>Google Cloud setup. Authentication &amp; security. Cloud Run deployment. Firestore or BigQuery for data. Scaling considerations. Cost management.</p></div>
+    <div class="ws"><div class="ws-num" style="color:var(--gg)">WORKSHOP 4 &#183; WEEK 4</div><h4>Deploy &amp; Grow</h4><p>Production readiness checklist. Monitoring &amp; logging. User feedback loops. Monetisation models. Google Cloud credits application. Your go-live launch.</p></div>
+  </div>
+
+  <!-- Pricing -->
+  <div class="price-grid">
+    <div class="price-card featured">
+      <div class="price-tag">Early Bird &#183; First 5 Spots</div>
+      <div class="price-val">R25,000</div>
+      <div class="price-note">Full 4-week bootcamp<br>All sessions, materials &amp; recordings</div>
+    </div>
+    <div class="price-card">
+      <div class="price-tag">Standard</div>
+      <div class="price-val">R32,000</div>
+      <div class="price-note">Full 4-week bootcamp<br>All sessions, materials &amp; recordings</div>
+    </div>
+    <div class="price-card">
+      <div class="price-tag">Individual Session</div>
+      <div class="price-val">R8,000</div>
+      <div class="price-note">Per workshop &#183; 3.5 hours<br>Pick the weeks you need</div>
+    </div>
+  </div>
+
+  <div style="text-align:center;padding:24px 0 0">
+    <a href="mailto:hello@imbila.ai?subject=Google%20AI%20Bootcamp%20Booking" class="btn btn-p">Book the Bootcamp &#8594;</a>
+    <a href="https://aistudio.google.com/" target="_blank" class="btn btn-o" style="margin-left:8px">Explore AI Studio Free &#8599;</a>
+  </div>
+</div>
+</section>
+
+<!-- VIDEO SECTION -->
+<section class="sect sect-grey sect-b">
+<div class="pg">
+  <div class="label">Watch &amp; Learn</div>
+  <h2>Google AI Studio Tutorials</h2>
+  <p class="sdesc">Get started with Google AI Studio and Gemini through these official tutorials &#8212; great for previewing what you&#8217;ll build in the bootcamp.</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+    <div>
+      <a href="https://www.youtube.com/watch?v=YuEELsmxJvs" target="_blank" rel="noopener" style="display:block;position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--g1);aspect-ratio:16/9;background:#000 url('https://img.youtube.com/vi/YuEELsmxJvs/maxresdefault.jpg') center/cover no-repeat">
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.3);transition:background .2s">
+          <div style="width:68px;height:48px;background:rgba(237,175,66,.95);border-radius:12px;display:flex;align-items:center;justify-content:center">
+            <div style="width:0;height:0;border-left:18px solid #fff;border-top:11px solid transparent;border-bottom:11px solid transparent;margin-left:4px"></div>
+          </div>
+        </div>
+      </a>
+      <p style="font-size:12px;color:var(--g5);text-align:center;margin-top:10px">Get Started with Google AI Studio &#8212; <a href="https://www.youtube.com/watch?v=YuEELsmxJvs" target="_blank" style="color:var(--hd);font-weight:600">Watch &#8599;</a></p>
+    </div>
+    <div>
+      <div style="padding:24px;border:1px solid var(--g1);border-radius:12px;background:var(--wh)">
+        <div style="font-size:15px;font-weight:700;color:var(--bk);margin-bottom:12px">How the bootcamp uses these</div>
+        <div style="font-size:14px;color:var(--g6);line-height:1.7">
+          <p style="margin-bottom:10px;max-width:none"><strong style="color:var(--bk)">Before each session:</strong> We share tutorials as pre-work so you arrive ready to build &#8212; not watch a lecture.</p>
+          <p style="margin-bottom:10px;max-width:none"><strong style="color:var(--bk)">During workshops:</strong> We go beyond what tutorials cover &#8212; real architecture decisions, production patterns, and debugging live together.</p>
+          <p style="max-width:none"><strong style="color:var(--bk)">After the bootcamp:</strong> Google&#8217;s tutorial library and your session recordings become your ongoing reference as you iterate on your product.</p>
+        </div>
+      </div>
+      <div style="margin-top:12px;text-align:center">
+        <a href="https://www.youtube.com/@GoogleDevelopers" target="_blank" class="btn btn-o">Google Developers on YouTube &#8599;</a>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- MORE COURSES (Free Google Courses) -->
+<section class="sect sect-b">
+<div class="pg">
+  <div class="label">Free Google AI Courses</div>
+  <h2>Keep learning &#8212; for free</h2>
+  <p class="sdesc">Google offers excellent free courses to deepen your AI knowledge. These complement the bootcamp perfectly &#8212; or stand on their own.</p>
+  <div class="mc-grid">
+    <a href="https://www.coursera.org/learn/google-ai-essentials" target="_blank" class="mc"><h4>Google AI Essentials</h4><div class="sub">Coursera &#183; Foundational AI concepts by Google</div><div class="mc-foot"><span class="cc-free">&#10003; Free</span><span style="color:var(--hd);font-weight:600">Coursera &#8599;</span></div></a>
+    <a href="https://www.cloudskillsboost.google/course_templates/536" target="_blank" class="mc"><h4>Intro to Generative AI</h4><div class="sub">Google Cloud Skills Boost &#183; Core concepts</div><div class="mc-foot"><span class="cc-free">&#10003; Free</span><span style="color:var(--hd);font-weight:600">Skills Boost &#8599;</span></div></a>
+    <a href="https://www.cloudskillsboost.google/course_templates/539" target="_blank" class="mc"><h4>Intro to Large Language Models</h4><div class="sub">Google Cloud Skills Boost &#183; LLM fundamentals</div><div class="mc-foot"><span class="cc-free">&#10003; Free</span><span style="color:var(--hd);font-weight:600">Skills Boost &#8599;</span></div></a>
+    <a href="https://www.cloudskillsboost.google/course_templates/556" target="_blank" class="mc"><h4>Generative AI Fundamentals</h4><div class="sub">Google Cloud Skills Boost &#183; Hands-on path</div><div class="mc-foot"><span class="cc-free">&#10003; Free</span><span style="color:var(--hd);font-weight:600">Skills Boost &#8599;</span></div></a>
+    <a href="https://www.cloudskillsboost.google/course_templates/554" target="_blank" class="mc"><h4>Intro to Responsible AI</h4><div class="sub">Google Cloud Skills Boost &#183; Ethics &amp; safety</div><div class="mc-foot"><span class="cc-free">&#10003; Free</span><span style="color:var(--hd);font-weight:600">Skills Boost &#8599;</span></div></a>
+    <a href="https://www.cloudskillsboost.google/course_templates/884" target="_blank" class="mc"><h4>Gemini for Google Workspace</h4><div class="sub">Google Cloud Skills Boost &#183; Productivity AI</div><div class="mc-foot"><span class="cc-free">&#10003; Free</span><span style="color:var(--hd);font-weight:600">Skills Boost &#8599;</span></div></a>
+  </div>
+  <div style="text-align:center;margin-top:20px">
+    <a href="https://cloud.google.com/training" target="_blank" class="btn btn-o">Browse All Google Cloud Training &#8599;</a>
+    <a href="https://ai.google/discover/" target="_blank" class="btn btn-o" style="margin-left:8px">Google AI Hub &#8599;</a>
+  </div>
+</div>
+</section>
+
+<!-- FAQ -->
+<section class="sect">
+<div class="pg">
+  <h2>Frequently Asked Questions</h2>
+  <p class="sdesc" style="margin-bottom:20px">About the bootcamp, pricing, and what to expect.</p>
+  <div class="faq-item" onclick="this.classList.toggle('open')"><button class="faq-q">What is the Google AI Studio Bootcamp? <span class="faq-icon">+</span></button><div class="faq-a">A 4-week, hands-on programme where you build a real product using Gemini and Google Cloud. Each week is a 3.5-hour workshop with a maximum of 6 participants. You go from exploring AI Studio in week 1 to deploying a production application in week 4.</div></div>
+  <div class="faq-item" onclick="this.classList.toggle('open')"><button class="faq-q">Do I need coding experience? <span class="faq-icon">+</span></button><div class="faq-a">Basic coding familiarity is helpful but not strictly required. The bootcamp includes starter code for every session, and the small group size means we can support varied skill levels. If you can navigate a code editor and understand basic concepts like APIs and variables, you will keep up.</div></div>
+  <div class="faq-item" onclick="this.classList.toggle('open')"><button class="faq-q">What&#8217;s included in the price? <span class="faq-icon">+</span></button><div class="faq-a">All 4 workshops (3.5 hours each), starter code repositories, session recordings, a completion certificate, post-bootcamp community access, and guidance on applying for Google Cloud credits (up to $350K for qualifying startups). Early bird pricing is R25,000 for the first 5 spots.</div></div>
+  <div class="faq-item" onclick="this.classList.toggle('open')"><button class="faq-q">Can I attend individual sessions? <span class="faq-icon">+</span></button><div class="faq-a">Yes &#8212; individual workshops are R8,000 each. This is ideal if you already have experience and want to focus on specific areas like deployment (Week 4) or Google Cloud integration (Week 3). Each session is designed to deliver standalone value.</div></div>
+  <div class="faq-item" onclick="this.classList.toggle('open')"><button class="faq-q">What are the Google Cloud credits? <span class="faq-icon">+</span></button><div class="faq-a">Google offers Cloud credits to qualifying startups through programmes like Google for Startups Cloud Program. Depending on eligibility, this can be up to $350,000 in credits. We help bootcamp graduates understand the application process and requirements.</div></div>
+  <div class="faq-item" onclick="this.classList.toggle('open')"><button class="faq-q">Is this affiliated with Google? <span class="faq-icon">+</span></button><div class="faq-a">Imbila.AI is an independent consulting studio. We are not affiliated with or endorsed by Google. We teach using Google&#8217;s publicly available tools (AI Studio, Gemini API, Google Cloud) and link to Google&#8217;s own free courses alongside our paid bootcamp.</div></div>
+  <div class="faq-item" onclick="this.classList.toggle('open')"><button class="faq-q">How does this relate to your other academies? <span class="faq-icon">+</span></button><div class="faq-a">We run three AI academies: Claude (Anthropic), OpenAI, and Google AI. Each focuses on a specific platform&#8217;s strengths. Many clients work across multiple platforms. The Google AI bootcamp specifically focuses on building production applications with Gemini and Google Cloud infrastructure.</div></div>
+</div>
+</section>
+
+<!-- CTA -->
+<section class="cta-s">
+<div class="pg">
+  <h2>Start building with <span style="color:var(--honey)">Google AI</span></h2>
+  <p>Explore AI Studio for free. Then join the bootcamp to go from prompts to production in 4 weeks.</p>
+  <div class="cta-act">
+    <a href="https://aistudio.google.com/" target="_blank" class="btn btn-p">Open AI Studio Free &#8599;</a>
+    <a href="mailto:hello@imbila.ai?subject=Google%20AI%20Bootcamp%20Booking" class="btn btn-g">Book the Bootcamp</a>
+    <a href="https://www.imbila.ai/ai-workshop-mastery-assessment/" class="btn btn-g">Take the AI Diagnostic</a>
+  </div>
+</div>
+</section>
+
+<footer class="ft"><div class="ft-inner"><div class="ft-top"><div class="ft-brand"><img src="https://www.imbila.ai/content/images/2026/03/imbila-mark-traced.svg" alt="Imbila" style="width:24px;height:24px"><span>Imbila<em>.AI</em></span></div><div class="ft-links"><a href="https://platform.imbila.ai">Imbila.AI</a><a href="https://demo.imbila.ai">Demos</a><a href="https://know.imbila.ai">Knowledge Base</a><a href="https://claude.imbila.ai">Claude Academy</a><a href="https://openai.imbila.ai">OpenAI Academy</a><a href="https://aistudio.google.com/">Google AI Studio</a><a href="https://cloud.google.com/training">Google Cloud Training</a><a href="mailto:hello@imbila.ai">Contact</a></div></div><div class="ft-legal">Google AI Studio, Gemini, and Google Cloud are products of Google LLC. All free courses referenced are provided by Google and its partners. Imbila.AI is an independent consulting studio and is not affiliated with Google LLC. &#169; 2026 Imbila.AI</div></div></footer>
+
+</body>
+</html>
