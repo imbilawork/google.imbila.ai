@@ -26,11 +26,12 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   const systemPrompt = `Generate a quiz for the Google AI module: ${module}. Return ONLY valid JSON: {"questions": [{"question": "...", "options": ["A. ...", "B. ...", "C. ...", "D. ..."], "correct": 0, "explanation": "..."}]}. 4 questions testing practical understanding of Google AI tools and concepts.`;
 
   try {
-    const result = await context.env.AI.run('@cf/google/gemma-3-12b-it', {
+    const result = await context.env.AI.run('@cf/meta/llama-3.1-8b-instruct', {
       messages: [
         { role: 'system', content: systemPrompt },
         { role: 'user', content: `Generate a 4-question quiz for the module: ${module}` },
       ],
+      max_tokens: 1024,
     });
 
     const responseText = result.response || '';

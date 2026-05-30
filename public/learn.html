@@ -226,7 +226,6 @@ body.dark .btn-g{color:var(--g3);border-color:var(--g7)}
 
 <footer class="ft"><div class="ft-inner"><div class="ft-brand"><img src="https://www.imbila.ai/content/images/2026/03/imbila-mark-traced.svg" alt="Imbila" style="width:20px;height:20px"><span>Imbila<em>.AI</em></span></div><div class="ft-links"><a href="/">Google AI Academy</a><a href="https://platform.imbila.ai">Platform</a><a href="https://demo.imbila.ai">Demos</a><a href="mailto:hello@imbila.ai">Contact</a></div></div></footer>
 
-<script src="https://platform.imbila.ai/auth-widget.js"></script>
 <script>
 // ============================================================
 // MODULE DATA
@@ -330,8 +329,9 @@ const MODULES = [
 let currentModule = 0;
 let completedModules = new Set();
 let chatHistory = [];
-let isAuthenticated = false;
-const AUTH_GATE_AFTER = 2; // require auth after module 2
+// Open access: all modules, AI tutor and quizzes are free. No sign-in required.
+let isAuthenticated = true;
+const AUTH_GATE_AFTER = 2; // require auth after module 2 (disabled while open access)
 
 // Load state from localStorage
 function loadState() {
@@ -559,7 +559,7 @@ async function sendTutor() {
           document.getElementById('tutorInput').focus();
           // Deduct tokens for tutor usage
           if (window.ImbilaAuth) {
-            ImbilaAuth.deductTokens(500, '@cf/google/gemma-3-12b-it', 'google-academy', 'AI tutor: ' + MODULES[currentModule].title);
+            ImbilaAuth.deductTokens(500, '@cf/meta/llama-3.3-70b-instruct-fp8-fast', 'google-academy', 'AI tutor: ' + MODULES[currentModule].title);
           }
           return;
         }
@@ -639,7 +639,7 @@ async function openQuiz() {
     renderQuiz(data);
     // Deduct tokens for assessment
     if (window.ImbilaAuth) {
-      ImbilaAuth.deductTokens(300, '@cf/google/gemma-3-12b-it', 'google-academy', 'Assessment: ' + MODULES[currentModule].title);
+      ImbilaAuth.deductTokens(300, '@cf/meta/llama-3.3-70b-instruct-fp8-fast', 'google-academy', 'Assessment: ' + MODULES[currentModule].title);
     }
   })
   .catch(function(err) {

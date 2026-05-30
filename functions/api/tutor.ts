@@ -41,7 +41,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   ];
 
   try {
-    const stream = await context.env.AI.run('@cf/google/gemma-3-12b-it', {
+    const stream = await context.env.AI.run('@cf/meta/llama-3.3-70b-instruct-fp8-fast', {
       messages,
       stream: true,
     });
